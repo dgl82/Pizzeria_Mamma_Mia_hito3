@@ -108,3 +108,33 @@ body {
   flex: 1 0 25%;
   margin: 2rem;
 }
+
+.Detalle {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  /* justify-self: center; */
+}
+
+.pizzaCarrito {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em;
+  align-items: center;
+}
+
+.carro {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorDetalle {
+  width: 50%;
+  margin: 2em 0;
+}
+
+p {
+  margin: 1rem 0;
+}
