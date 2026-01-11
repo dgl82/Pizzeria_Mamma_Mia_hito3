@@ -16,7 +16,7 @@ const CardPizza = ({ name, desc, price, ingredients, img }) => {
           <div className="listaIngredientes">
             <ul>
               {ingredients.map((ingredient) => (
-                <li>{ingredient}</li>
+                <li key={ingredient}>{ingredient}</li>
               ))}
             </ul>
           </div>
