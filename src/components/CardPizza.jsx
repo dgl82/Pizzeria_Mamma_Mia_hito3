@@ -2,21 +2,23 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
-const CardPizza = ({ name, price, ingredients, img }) => {
+const CardPizza = ({ name, desc, price, ingredients, img }) => {
   return (
-    <Card style={{ width: "23rem" }}>
+    <Card className="pizzas" style={{ width: "23rem" }}>
       <Card.Img variant="top" src={img} />
       <Card.Body>
         <Card.Title>Pizza {name}</Card.Title>
+        <Card.Text>{desc}</Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroup.Item>
-          <p className="centrado">Ingredientes:</p>
+          <p className="centrado">🍕 Ingredientes:</p>
           <div className="listaIngredientes">
-            🍕
-            {ingredients.map((ingredient) => (
-              <p> {ingredient},</p>
-            ))}
+            <ul>
+              {ingredients.map((ingredient) => (
+                <li>{ingredient}</li>
+              ))}
+            </ul>
           </div>
         </ListGroup.Item>
       </ListGroup>
