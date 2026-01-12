@@ -15,15 +15,19 @@ const Cart = () => {
   };
 
   const quitarPizza = (pizza) => {
-    const sacarPizza = [...cart];
-    const indice = sacarPizza.findIndex(
+    const restarPizza = [...cart];
+    const indice = restarPizza.findIndex(
       (element) => element.name === pizza.name
     );
-    // if (sacarPizza[indice].count === 0) {
-
-    // }
-    sacarPizza[indice].count -= 1;
-    setCart(sacarPizza);
+    if (restarPizza[indice].count === 1) {
+      const quitarPizza = restarPizza.filter(
+        (element) => element.name !== pizza.name
+      );
+      setCart(quitarPizza);
+    } else {
+      restarPizza[indice].count -= 1;
+      setCart(restarPizza);
+    }
   };
 
   const calcularTotal = () => {
