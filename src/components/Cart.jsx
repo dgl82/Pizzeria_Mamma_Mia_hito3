@@ -10,9 +10,20 @@ const Cart = () => {
     const indice = nuevaPizza.findIndex(
       (element) => element.name === pizza.name
     );
-    console.log(indice);
     nuevaPizza[indice].count += 1;
     setCart(nuevaPizza);
+  };
+
+  const quitarPizza = (pizza) => {
+    const sacarPizza = [...cart];
+    const indice = sacarPizza.findIndex(
+      (element) => element.name === pizza.name
+    );
+    // if (sacarPizza[indice].count === 0) {
+
+    // }
+    sacarPizza[indice].count -= 1;
+    setCart(sacarPizza);
   };
 
   const calcularTotal = () => {
@@ -38,7 +49,8 @@ const Cart = () => {
                   <img src={pizza.img} width="50" height="50" /> {pizza.name}
                 </div>
                 <div>
-                  ${pizza.price.toLocaleString("es-CL")} <Button>-</Button>{" "}
+                  ${pizza.price.toLocaleString("es-CL")}{" "}
+                  <Button onClick={() => quitarPizza(pizza)}>-</Button>{" "}
                   {pizza.count}{" "}
                   <Button onClick={() => agregarPizza(pizza)}>+</Button>
                 </div>
