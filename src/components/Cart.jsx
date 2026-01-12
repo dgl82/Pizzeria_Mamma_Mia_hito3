@@ -8,9 +8,7 @@ const Cart = () => {
   const calcularTotal = () => {
     let total = 0;
     const carrito = [...cart];
-    carrito.forEach((element) => {
-      total += element.price * element.count;
-    });
+    carrito.forEach((element) => (total += element.price * element.count));
     return total;
   };
 
