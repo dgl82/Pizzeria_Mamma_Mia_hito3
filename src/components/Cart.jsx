@@ -1,7 +1,21 @@
 import Button from "react-bootstrap/esm/Button";
 import { pizzaCart } from "../assets/pizzas";
+import { useState } from "react";
 
 const Cart = () => {
+  const [cart, setCart] = useState(pizzaCart);
+
+  const calcularTotal = () => {
+    let total = 0;
+    const carrito = [...cart];
+    carrito.forEach((element) => {
+      total += element.price * element.count;
+    });
+    return total;
+  };
+
+  const total = calcularTotal();
+
   return (
     <div className="carro">
       <div className="contenedorDetalle">
@@ -9,7 +23,7 @@ const Cart = () => {
           <p>Detalles del pedido:</p>
         </div>
         <div className="Detalle">
-          {pizzaCart.map((pizza) => {
+          {cart.map((pizza) => {
             return (
               <div className="pizzaCarrito" key={pizza.id}>
                 <div>
@@ -23,7 +37,9 @@ const Cart = () => {
             );
           })}
         </div>
-        <div style={{ margin: "1rem" }}>Total: $: XXXXX</div>
+        <div style={{ margin: "1rem" }}>
+          Total: $: {total.toLocaleString("es-CL")}
+        </div>
         <div style={{ margin: "1rem" }}>
           <Button>Pagar</Button>
         </div>
