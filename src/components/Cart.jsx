@@ -5,6 +5,16 @@ import { useState } from "react";
 const Cart = () => {
   const [cart, setCart] = useState(pizzaCart);
 
+  const agregarPizza = (pizza) => {
+    const nuevaPizza = [...cart];
+    const indice = nuevaPizza.findIndex(
+      (element) => element.name === pizza.name
+    );
+    console.log(indice);
+    nuevaPizza[indice].count += 1;
+    setCart(nuevaPizza);
+  };
+
   const calcularTotal = () => {
     let total = 0;
     const carrito = [...cart];
@@ -29,7 +39,8 @@ const Cart = () => {
                 </div>
                 <div>
                   ${pizza.price.toLocaleString("es-CL")} <Button>-</Button>{" "}
-                  {pizza.count} <Button>+</Button>
+                  {pizza.count}{" "}
+                  <Button onClick={() => agregarPizza(pizza)}>+</Button>
                 </div>
               </div>
             );
